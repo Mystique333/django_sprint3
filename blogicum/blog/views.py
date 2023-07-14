@@ -9,7 +9,7 @@ def index(request):
         is_published=True,
         category__is_published=True,
         pub_date__lte=timezone.now()
-        ).order_by('-created_at')[:5]
+    ).order_by('-created_at')[:5]
     context = {'posts': post_list}
     return render(request, template, context)
 
@@ -36,12 +36,13 @@ def category_posts(request, category_slug):
         'category',
         'author',
         'location'
-        ).filter(
+    ).filter(
         is_published=True,
         category__slug=category_slug,
-        pub_date__lte=timezone.now())
+        pub_date__lte=timezone.now()
+    )
     context = {
-                'category': category,
-                'post_list': category_list
-               }
+        'category': category,
+        'post_list': category_list
+    }
     return render(request, template, context)
