@@ -23,7 +23,7 @@ class Category(BaseModel):
         verbose_name_plural = 'Категории'
 
     def __str__(self):
-        return self.title
+        return self.title[0:20]
 
 
 class Location(BaseModel):
@@ -34,7 +34,7 @@ class Location(BaseModel):
         verbose_name_plural = 'Местоположения'
 
     def __str__(self):
-        return self.title
+        return self.name[0:20]
 
 
 class Post(BaseModel):
